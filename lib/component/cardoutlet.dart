@@ -24,7 +24,6 @@ class _CardoutletState extends State<Cardoutlet> {
   double _width = 0;
   ubah(bool parameter, BuildContext context) {
     if (parameter == true) {
-      print(parameter);
       setState(() {
         _height = MediaQuery.of(context).size.height;
         _width = MediaQuery.of(context).size.width * 0.65;

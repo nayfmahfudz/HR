@@ -41,6 +41,9 @@ dependencies:
   page_transition: ^2.0.5
   date_time_picker: ^2.1.0
   intl: ^0.17.0
+  flutter_background_service: ^0.2.6
+  foreground_service: ^2.0.1+1
+  device_info_plus: ^3.2.3
 
 dev_dependencies:
   flutter_test:
