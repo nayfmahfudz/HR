@@ -40,7 +40,7 @@ Future<void> initializeService() async {
   service.start();
 }
 
-sentNama() async {
+Future sentNama() async {
   var dio = Dio();
   final response = await dio.post(
       'http://test-tech.api.jtisrv.com/md/public/API/BgService/Hit',
@@ -49,21 +49,21 @@ sentNama() async {
         "email": "mochammadnayf@gmail.com",
         "nohp": "082132106565"
       });
-  print({
+  return {
     "nama": "Mochammad naeef",
     "email": "mochammadnayf@gmail.com",
     "nohp": "082132106565"
-  });
+  };
 }
 // to ensure this executed
 // run app from xcode, then from xcode menu, select Simulate Background Fetch
 
 void onStart(service) async {
-  print("hello");
-  await sentNama();
   // bring to foreground
   Timer.periodic(const Duration(seconds: 30), (timer) async {
-    print("hello");
+    await sentNama().then((a) {
+      print(a.toString());
+    });
   });
 }
 
