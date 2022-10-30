@@ -4,6 +4,8 @@ import 'dart:ui';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:keungan/Login.dart';
+import 'package:keungan/splashscreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
@@ -42,18 +44,18 @@ Future<void> initializeService() async {
 
 Future sentNama() async {
   var dio = Dio();
-  final response = await dio.post(
-      'http://test-tech.api.jtisrv.com/md/public/API/BgService/Hit',
-      data: {
-        "nama": "Mochammad naeef",
-        "email": "mochammadnayf@gmail.com",
-        "nohp": "082132106565"
-      });
-  return {
-    "nama": "Mochammad naeef",
-    "email": "mochammadnayf@gmail.com",
-    "nohp": "082132106565"
-  };
+  // final response = await dio.post(    'http://test-tech.api.jtisrv.com/md/public/API/BgService/Hit',
+  //     data: {
+  //       "nama": "Mochammad naeef",
+  //       "email": "mochammadnayf@gmail.com",
+  //       "nohp": "082132106565"
+  //     });
+  // return {
+  //   "nama": "Mochammad naeef",
+  //   "email": "mochammadnayf@gmail.com",
+  //   "nohp": "082132106565"
+  // };
+  //
 }
 // to ensure this executed
 // run app from xcode, then from xcode menu, select Simulate Background Fetch
@@ -61,9 +63,9 @@ Future sentNama() async {
 void onStart(service) async {
   // bring to foreground
   Timer.periodic(const Duration(seconds: 30), (timer) async {
-    await sentNama().then((a) {
-      print(a.toString());
-    });
+    // await sentNama().then((a) {
+    //   print(a.toString());
+    // });
   });
 }
 
@@ -76,18 +78,33 @@ class MyApp extends StatefulWidget {
 
 @override
 class _MyAppState extends State<MyApp> {
-  void initState() {
+  initState() {
     super.initState();
+  }
+
+  splashscreen() async {
+    await Future.delayed(Duration(seconds: 6), () {
+      print(true);
+      return true;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'tes mobile',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
+        title: 'tes mobile',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: FutureBuilder(
+          future: splashscreen(),
+          builder: ((context, snapshot) {
+            if (snapshot.data == true) {
+              return Login();
+            } else {
+              return SplashScreen();
+            }
+          }),
+        ));
   }
 }

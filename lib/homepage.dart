@@ -35,13 +35,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   getOutlet() async {
     var dio = Dio();
-    final response = await dio.post(
-        'http://test-tech.api.jtisrv.com/md/public/API/Auth/initData',
-        data: {"act": "initData", "outlet_id": 1});
-    print(response.data);
-    setState(() {
-      jumlahOutlet.add(response.data['data']["outlet"]);
-    });
+    // final response = await dio.post(
+    //     'http://test-tech.api.jtisrv.com/md/public/API/Auth/initData',
+    //     data: {"act": "initData", "outlet_id": 1});
+    // print(response.data);
+    // setState(() {
+    //   jumlahOutlet.add(response.data['data']["outlet"]);
+    // });
 
     print(jumlahOutlet);
 
@@ -50,19 +50,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
   login() async {
     var dio = Dio();
-    final response = await dio.post(
-        'http://test-tech.api.jtisrv.com/md/public/API/Auth',
-        data: {"act": "LOGIN", "un": "admin@admin.com", "up": "admin"});
-    print(response.data['status']["login"]);
-    if (response.data['status']["login"] == true) {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setString(
-          'role', json.encode(response.data["status"]['role']));
-      print(response.data["status"]['role']);
-      return true;
-    } else {
-      return false;
-    }
+    // final response = await dio.post(
+    //     'http://test-tech.api.jtisrv.com/md/public/API/Auth',
+    //     data: {"act": "LOGIN", "un": "admin@admin.com", "up": "admin"});
+    // print(response.data['status']["login"]);
+    // if (response.data['status']["login"] == true) {
+    //   SharedPreferences prefs = await SharedPreferences.getInstance();
+    //   await prefs.setString(
+    //       'role', json.encode(response.data["status"]['role']));
+    //   print(response.data["status"]['role']);
+    //   return true;
+    // } else {
+    //   return false;
+    // }
   }
 
   String selected = "HOME";
