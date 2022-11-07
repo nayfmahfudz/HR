@@ -12,35 +12,35 @@ import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:keungan/homepage.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await initializeService();
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await initializeService();
   runApp(const MyApp());
 }
 
-Future<void> initializeService() async {
-  final service = FlutterBackgroundService();
-  await service.configure(
-    androidConfiguration: AndroidConfiguration(
-      // this will executed when app is in foreground or background in separated isolate
-      onStart: onStart,
+// Future<void> initializeService() async {
+//   final service = FlutterBackgroundService();
+//   await service.configure(
+//     androidConfiguration: AndroidConfiguration(
+//       // this will executed when app is in foreground or background in separated isolate
+//       onStart: onStart,
 
-      // auto start service
-      autoStart: true,
-      isForegroundMode: true,
-    ),
-    iosConfiguration: IosConfiguration(
-      // auto start service
-      autoStart: true,
+//       // auto start service
+//       autoStart: true,
+//       isForegroundMode: true,
+//     ),
+//     iosConfiguration: IosConfiguration(
+//       // auto start service
+//       autoStart: true,
 
-      // this will executed when app is in foreground in separated isolate
-      onForeground: onStart,
+//       // this will executed when app is in foreground in separated isolate
+//       onForeground: onStart,
 
-      // you have to enable background fetch capability on xcode project
-      onBackground: () {},
-    ),
-  );
-  service.start();
-}
+//       // you have to enable background fetch capability on xcode project
+//       onBackground: () {},
+//     ),
+//   );
+//   service.start();
+// }
 
 Future sentNama() async {
   var dio = Dio();
@@ -82,9 +82,8 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
-  splashscreen() async {
-    await Future.delayed(Duration(seconds: 6), () {
-      print(true);
+  Future splashscreen() async {
+    return await Future.delayed(Duration(seconds: 6), () {
       return true;
     });
   }
@@ -92,7 +91,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'tes mobile',
+        title: 'HRD',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

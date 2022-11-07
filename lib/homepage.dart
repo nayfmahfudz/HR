@@ -8,11 +8,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+import 'component/fom.dart';
+
+class Menu extends StatefulWidget {
+  const Menu({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Menu> createState() => _MenuState();
 }
 
 Path getClip(Size size) {
@@ -24,7 +26,7 @@ Path getClip(Size size) {
   return path;
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MenuState extends State<Menu> {
   List jumlahOutlet = [];
   @override
   void initState() {
@@ -65,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // }
   }
 
-  String selected = "HOME";
+  String selected = "Home";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,26 +84,24 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   color: putih),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Row(
                     children: [
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
-                        child: Center(
-                          child: SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            width: MediaQuery.of(context).size.width,
-                            child: Row(
-                              children: [
-                                Expanded(
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.06,
+                          width: MediaQuery.of(context).size.width,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Center(
                                   child: Padding(
-                                    padding: EdgeInsets.fromLTRB(
-                                        MediaQuery.of(context).size.width / 6,
-                                        0,
-                                        0,
-                                        8),
+                                    padding: const EdgeInsets.only(left: 30),
                                     child: Text('APP KEUANGAN',
                                         textAlign: TextAlign.center,
                                         style: GoogleFonts.roboto(
@@ -114,16 +114,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                         )),
                                   ),
                                 ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(16.0, 0, 16, 0),
-                                  child: Image.asset(
-                                      "assets/Button_Notifikasi.png",
-                                      height: 50,
-                                      fit: BoxFit.contain),
-                                )
-                              ],
-                            ),
+                              ),
+                              Image.asset("assets/Button_Notifikasi.png",
+                                  height: 50, fit: BoxFit.contain),
+                              SizedBox(
+                                width: 30,
+                              )
+                            ],
                           ),
                         ),
                       ),
@@ -138,198 +135,58 @@ class _MyHomePageState extends State<MyHomePage> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Expanded(
-                                  child: SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.11,
-                                width:
-                                    MediaQuery.of(context).size.height * 0.055,
-                                child: GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        selected = "HOME";
-                                      });
-                                    },
-                                    child: selected == "HOME"
-                                        ? Column(
-                                            children: [
-                                              Image.asset(
-                                                  "assets/Button_Home_Aktif.png",
-                                                  fit: BoxFit.contain),
-                                              Text('Home',
-                                                  textAlign: TextAlign.center,
-                                                  style: GoogleFonts.roboto(
-                                                    fontSize: 12,
-                                                    color: biru,
-                                                    fontWeight: FontWeight.w400,
-                                                    textStyle: Theme.of(context)
-                                                        .textTheme
-                                                        .subtitle1,
-                                                  )),
-                                            ],
-                                          )
-                                        : Column(
-                                            children: [
-                                              Image.asset(
-                                                  "assets/Button_Home_Tidak_Aktif.png",
-                                                  fit: BoxFit.contain),
-                                              Text('Home',
-                                                  textAlign: TextAlign.center,
-                                                  style: GoogleFonts.roboto(
-                                                    fontSize: 12,
-                                                    color: biru,
-                                                    fontWeight: FontWeight.w400,
-                                                    textStyle: Theme.of(context)
-                                                        .textTheme
-                                                        .subtitle1,
-                                                  )),
-                                            ],
-                                          )),
-                              )),
-                              Expanded(
-                                  child: SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.11,
-                                width:
-                                    MediaQuery.of(context).size.height * 0.055,
-                                child: GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        selected = "TRANSAKSI";
-                                      });
-                                    },
-                                    child: selected == "TRANSAKSI"
-                                        ? Column(
-                                            children: [
-                                              Image.asset(
-                                                  "assets/Button_Transaksi_Aktif.png",
-                                                  fit: BoxFit.contain),
-                                              Text('Transaksi',
-                                                  textAlign: TextAlign.center,
-                                                  style: GoogleFonts.roboto(
-                                                    fontSize: 12,
-                                                    color: biru,
-                                                    fontWeight: FontWeight.w400,
-                                                    textStyle: Theme.of(context)
-                                                        .textTheme
-                                                        .subtitle1,
-                                                  )),
-                                            ],
-                                          )
-                                        : Column(
-                                            children: [
-                                              Image.asset(
-                                                  "assets/Button_Transaksi_Tidak_Aktif.png",
-                                                  fit: BoxFit.contain),
-                                              Text('Transaksi',
-                                                  textAlign: TextAlign.center,
-                                                  style: GoogleFonts.roboto(
-                                                    fontSize: 12,
-                                                    color: biru,
-                                                    fontWeight: FontWeight.w400,
-                                                    textStyle: Theme.of(context)
-                                                        .textTheme
-                                                        .subtitle1,
-                                                  )),
-                                            ],
-                                          )),
-                              )),
-                              Expanded(
-                                  child: SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.11,
-                                width:
-                                    MediaQuery.of(context).size.height * 0.055,
-                                child: GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        selected = "LAPORAN";
-                                      });
-                                    },
-                                    child: selected == "LAPORAN"
-                                        ? Column(
-                                            children: [
-                                              Image.asset(
-                                                  "assets/Button_Laporan_Aktif.png",
-                                                  fit: BoxFit.contain),
-                                              Text('Laporan',
-                                                  textAlign: TextAlign.center,
-                                                  style: GoogleFonts.roboto(
-                                                    fontSize: 12,
-                                                    color: biru,
-                                                    fontWeight: FontWeight.w400,
-                                                    textStyle: Theme.of(context)
-                                                        .textTheme
-                                                        .subtitle1,
-                                                  )),
-                                            ],
-                                          )
-                                        : Column(
-                                            children: [
-                                              Image.asset(
-                                                  "assets/Button_Laporan_Tidak_Aktif.png",
-                                                  fit: BoxFit.contain),
-                                              Text('Laporan',
-                                                  textAlign: TextAlign.center,
-                                                  style: GoogleFonts.roboto(
-                                                    fontSize: 12,
-                                                    color: biru,
-                                                    fontWeight: FontWeight.w400,
-                                                    textStyle: Theme.of(context)
-                                                        .textTheme
-                                                        .subtitle1,
-                                                  )),
-                                            ],
-                                          )),
-                              )),
-                              Expanded(
-                                  child: SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.11,
-                                width:
-                                    MediaQuery.of(context).size.height * 0.055,
-                                child: GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        selected = "TOOLS";
-                                      });
-                                    },
-                                    child: selected == "TOOLS"
-                                        ? Column(
-                                            children: [
-                                              Image.asset(
-                                                  "assets/Button_Tools_Aktif.png",
-                                                  fit: BoxFit.contain),
-                                              Text('Tools',
-                                                  textAlign: TextAlign.center,
-                                                  style: GoogleFonts.roboto(
-                                                    fontSize: 12,
-                                                    color: biru,
-                                                    fontWeight: FontWeight.w400,
-                                                    textStyle: Theme.of(context)
-                                                        .textTheme
-                                                        .subtitle1,
-                                                  )),
-                                            ],
-                                          )
-                                        : Column(
-                                            children: [
-                                              Image.asset(
-                                                  "assets/Button_Tools_Tidak_Aktif.png",
-                                                  fit: BoxFit.contain),
-                                              Text('Tools',
-                                                  textAlign: TextAlign.center,
-                                                  style: GoogleFonts.roboto(
-                                                    fontSize: 12,
-                                                    color: biru,
-                                                    fontWeight: FontWeight.w400,
-                                                    textStyle: Theme.of(context)
-                                                        .textTheme
-                                                        .subtitle1,
-                                                  )),
-                                            ],
-                                          )),
-                              )),
+                              ReturnValueToParent(() {
+                                setState(() {
+                                  selected = "Home";
+                                });
+                              }, selected, "assets/Button_Home_Aktif.png",
+                                  "assets/Button_Home_Tidak_Aktif.png", "Home"),
+                              ReturnValueToParent(() {
+                                setState(() {
+                                  selected = "Transaksi";
+                                });
+                              }, selected, "assets/Button_Home_Aktif.png",
+                                  "assets/Button_Home_Tidak_Aktif.png", "Home"),
+                              // MenuUtama(
+                              //     context,
+                              //     selected,
+                              //     "assets/Button_Home_Aktif.png",
+                              //     "assets/Button_Home_Tidak_Aktif.png",
+                              //     "Home", () {
+                              //   setState(() {
+                              //     selected = "Home";
+                              //   });
+                              // }),
+                              // MenuUtama(
+                              //     context,
+                              //     selected,
+                              //     "assets/Button_Transaksi_Aktif.png",
+                              //     "assets/Button_Transaksi_Tidak_Aktif.png",
+                              //     "Transaksi", () {
+                              //   setState(() {
+                              //     selected = "Transaksi";
+                              //   });
+                              // }),
+                              // MenuUtama(
+                              //     context,
+                              //     selected,
+                              //     "assets/Button_Laporan_Aktif.png",
+                              //     "assets/Button_Laporan_Tidak_Aktif.png",
+                              //     "Laporan", () {
+                              //   setState(() {
+                              //     selected = "Laporan";
+                              //   });
+                              // }),
+                              // MenuUtama(
+                              //     context,
+                              //     selected,
+                              //     "assets/Button_Tools_Aktif.png",
+                              //     "assets/Button_Tools_Tidak_Aktif.png",
+                              //     "Tools", () {
+                              //   setState(() {
+                              //     selected = "Tools";
+                              //   });
+                              // }),
                             ],
                           ),
                           decoration: BoxDecoration(

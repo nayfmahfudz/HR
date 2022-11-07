@@ -236,7 +236,6 @@ class _CardoutletState extends State<Cardoutlet> {
               onTap: () {
                 setState(() {
                   parameter = !parameter;
-                  print("dddd");
                   print(parameter);
                   ubah(parameter, context);
                 });

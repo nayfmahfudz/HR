@@ -1,194 +1,169 @@
-// import 'package:flutter/material.dart';
-// // import 'package:test2/util/dbhelper.dart';
-// // import 'Iconbottom.dart';
-// // import 'model/User.dart';
-// // import 'model/apirequest.dart';
-// // import 'provider/Restapi.dart';
-// // import 'package:provider/provider.dart';
-// // import 'Login.dart';
-// // import 'util/dbhelper.dart' as db;
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:keungan/homepage.dart';
+import '../main.dart';
+import '../setting.dart';
 
-// // final login = LoginState();
-// final formKey = GlobalKey<FormState>();
-// final formKey1 = GlobalKey<FormState>();
-// final formKey2 = GlobalKey<FormState>();
-// final formKey3 = GlobalKey<FormState>();
+_navigateToNextScreen(BuildContext context, Widget newScreen) {
+  Navigator.of(context)
+      .push(MaterialPageRoute(builder: (context) => newScreen));
+}
 
-// // String validemail(String value) {
-// //   // Pattern pattern =
-// //   //     r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-// //   // RegExp regex = new RegExp(pattern);
-// // //   if (!regex.hasMatch(value)) return 'Masukan Email Valid';
-// // //   else return false
-// // }
+tinggiAs(context) {
+  var pixRatio = MediaQuery.of(context).devicePixelRatio;
+  var heightRatio = MediaQuery.of(context).size.height * pixRatio;
+  var widthRatio = MediaQuery.of(context).size.width * pixRatio;
+  return heightRatio / widthRatio;
+}
 
-// String validenama(String value) {
-//   if (value.length < 3)
-//     return 'Nama Harus diisi minimal 3 kata';
-//   else
-//     return "";
-// }
+lebar(context) {
+  var pixRatio = MediaQuery.of(context).devicePixelRatio;
+  var heightRatio = MediaQuery.of(context).size.height * pixRatio;
+  var widthRatio = MediaQuery.of(context).size.width * pixRatio;
+  return widthRatio / heightRatio;
+}
 
-// String validpassgt(String value) {
-//   if (value.length < 5) return 'Password harus diisi Minimal 5 ';
-//   if (value != passinputcontroller.text)
-//     return 'Password Salah ';
-//   else
-//     return "";
-// }
+nama(TextEditingController controller) {
+  return StatefulBuilder(
+      builder: (BuildContext context, StateSetter setState) => Container(
+              child: TextFormField(
+            controller: controller,
+            validator: (value) {
+              if (value != null && value.length < 3)
+                return 'Nama Harus diisi minimal 3 kata';
+              else
+                return null;
+            },
+            autofocus: false,
+            decoration: InputDecoration(
+              suffixIcon:
+                  IconButton(onPressed: (() {}), icon: Icon(Icons.account_box)),
+              hintText: 'Username',
+              contentPadding: EdgeInsets.all(20),
+            ),
+          )));
+}
 
-// String validpassbr(String value) {
-//   if (value.length < 5) return 'Password harus diisi Minimal 5 ';
-//   if (value != passvrinputcontroller.text)
-//     return 'Password Tidak Sama ';
-//   else
-//     return "";
-// }
+password(TextEditingController controller, bool hide) {
+  return StatefulBuilder(
+      builder: (BuildContext context, StateSetter setState) => Container(
+            child: TextFormField(
+                validator: (value) {
+                  if (value != null && value.length < 5)
+                    return 'Password harus diisi Minimal 5 ';
+                  else
+                    return null;
+                },
+                autofocus: false,
+                controller: controller,
+                obscureText: hide ? true : false,
+                decoration: InputDecoration(
+                  hintText: ' Password',
+                  contentPadding: EdgeInsets.all(20),
+                  border: OutlineInputBorder(),
+                  suffixIcon: IconButton(
+                      icon: Icon(
+                        hide ? Icons.visibility : Icons.visibility_off,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          hide = !hide;
+                        });
+                      }),
+                )),
+          ));
+}
 
-// String validpassvr(String value) {
-//   if (value.length < 5) return 'Password harus diisi Minimal 5 ';
-//   if (value != passbrinputcontroller.text)
-//     return 'Password Tidak Sama ';
-//   else
-//     return "";
-// }
+class ReturnValueToParent extends StatelessWidget {
+  Function myNumber;
+  String selected;
+  String aktif;
+  String tidakAktif;
+  String judul;
+  ReturnValueToParent(
+      this.myNumber, this.selected, this.aktif, this.tidakAktif, this.judul);
 
-// String validpass(String value) {
-//   if (value.length < 5)
-//     return 'Password harus diisi Minimal 5 ';
-//   else
-//     return "";
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+        child: SizedBox(
+      height: MediaQuery.of(context).size.height * 0.11,
+      width: MediaQuery.of(context).size.height * 0.055,
+      child: GestureDetector(
+          onTap: () {
+            selected = judul;
+          },
+          child: selected == judul
+              ? Column(
+                  children: [
+                    Image.asset(aktif, fit: BoxFit.contain),
+                    Text(judul,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.roboto(
+                          fontSize: 12,
+                          color: biru,
+                          fontWeight: FontWeight.w400,
+                          textStyle: Theme.of(context).textTheme.subtitle1,
+                        )),
+                  ],
+                )
+              : Column(
+                  children: [
+                    Image.asset(tidakAktif, fit: BoxFit.contain),
+                    Text(judul,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.roboto(
+                          fontSize: 12,
+                          color: biru,
+                          fontWeight: FontWeight.w400,
+                          textStyle: Theme.of(context).textTheme.subtitle1,
+                        )),
+                  ],
+                )),
+    ));
+  }
+}
 
-// String validalamat(String value) {
-//   if (value.length < 10)
-//     return 'Mohon alamat diisi dengan lengkap';
-//   else
-//     return "";
-// }
-
-// String validnomor(String value) {
-//   if (value.length < 8)
-//     return 'Mohon Nomor diisi dengan lengkap';
-//   else
-//     return "";
-// }
-
-// bool autoValidate = false;
-// String _nama="";
-// String _email="";
-// String _pass="";
-// String _alamat="";
-// String _nomor="";
-// String _passbr="";
-// String _passver="";
-// // var pass =int.parse(_passver);
-
-// var teks = Text(
-//   "Pendaftaran",
-//   textAlign: TextAlign.center,
-//   style: TextStyle(color: Color.fromRGBO(237, 155, 12, 1), fontSize: 40),
-// );
-
-// var nama = StatefulBuilder(
-//     builder: (BuildContext context, StateSetter setState) => Container(
-//             child: TextFormField(
-//           controller: namainputcontroller,
-//           // validator: validenama,
-//           // onSaved: ( value) {
-//           //   _nama = value;
-//           // },
-//           autofocus: false,
-//           decoration: InputDecoration(
-//             suffixIcon: IconButton(icon: Icon(Icons.account_box)),
-//             hintText: 'Username',
-//             contentPadding: EdgeInsets.all(20),
-//             border: Provider.of<Restapi>(context).getboolean()
-//                 ? OutlineInputBorder()
-//                 : null,
-//           ),
-//         )));
-
-// var passwordbaru = StatefulBuilder(
-//     builder: (BuildContext context, StateSetter setState) => Container(
-//           child: TextFormField(
-//               validator: validpassbr,
-//               autofocus: false,
-//               onSaved: (value) {
-//                 _passbr = value;
-//               },
-//               controller: passbrinputcontroller,
-//               obscureText: passwordVisible ? true : false,
-//               decoration: InputDecoration(
-//                 hintText: ' Password',
-//                 contentPadding: EdgeInsets.all(20),
-//                 border: OutlineInputBorder(),
-//                 suffixIcon: IconButton(
-//                     icon: Icon(
-//                       passwordVisible ? Icons.visibility : Icons.visibility_off,
-//                     ),
-//                     onPressed: () {
-//                       setState(() {
-//                         passwordVisible = !passwordVisible;
-//                       });
-//                     }),
-//               )),
-//         ));
-// var passwordver = StatefulBuilder(
-//     builder: (BuildContext context, StateSetter setState) => Container(
-//           child: Container(
-//             child: TextFormField(
-//                 validator: validpassvr,
-//                 autofocus: false,
-//                 onSaved: (value) {
-//                   _passver = value;
-//                 },
-//                 controller: passvrinputcontroller,
-//                 obscureText: passwordVisible ? true : false,
-//                 decoration: InputDecoration(
-//                   hintText: ' Password',
-//                   contentPadding: EdgeInsets.all(20),
-//                   border: OutlineInputBorder(),
-//                   suffixIcon: IconButton(
-//                       icon: Icon(
-//                         passwordVisible
-//                             ? Icons.visibility
-//                             : Icons.visibility_off,
-//                       ),
-//                       onPressed: () {
-//                         setState(() {
-//                           passwordVisible = !passwordVisible;
-//                         });
-//                       }),
-//                 )),
-//           ),
-//         ));
-// var passwordlama = StatefulBuilder(
-//     builder: (BuildContext context, StateSetter setState) => Container(
-//           child: Container(
-//             child: TextFormField(
-//                 validator: validpassgt,
-//                 autofocus: false,
-//                 controller: passcontroller,
-//                 obscureText: passwordVisible ? true : false,
-//                 decoration: InputDecoration(
-//                   hintText: ' Password',
-//                   contentPadding: EdgeInsets.all(20),
-//                   border: OutlineInputBorder(),
-//                   suffixIcon: IconButton(
-//                       icon: Icon(
-//                         passwordVisible
-//                             ? Icons.visibility
-//                             : Icons.visibility_off,
-//                       ),
-//                       onPressed: () {
-//                         setState(() {
-//                           passwordVisible = !passwordVisible;
-//                         });
-//                       }),
-//                 )),
-//           ),
-//         ));
+menuUtama(BuildContext context, String selected, String aktif,
+    String tidakAktif, String judul, Function fungsi) {
+  return StatefulBuilder(
+      builder: (BuildContext context, StateSetter setState) => Expanded(
+              child: SizedBox(
+            height: MediaQuery.of(context).size.height * 0.11,
+            width: MediaQuery.of(context).size.height * 0.055,
+            child: GestureDetector(
+                onTap: () => fungsi,
+                child: selected == judul
+                    ? Column(
+                        children: [
+                          Image.asset(aktif, fit: BoxFit.contain),
+                          Text(judul,
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.roboto(
+                                fontSize: 12,
+                                color: biru,
+                                fontWeight: FontWeight.w400,
+                                textStyle:
+                                    Theme.of(context).textTheme.subtitle1,
+                              )),
+                        ],
+                      )
+                    : Column(
+                        children: [
+                          Image.asset(tidakAktif, fit: BoxFit.contain),
+                          Text(judul,
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.roboto(
+                                fontSize: 12,
+                                color: biru,
+                                fontWeight: FontWeight.w400,
+                                textStyle:
+                                    Theme.of(context).textTheme.subtitle1,
+                              )),
+                        ],
+                      )),
+          )));
+}
 // var alamat = StatefulBuilder(
 //     builder: (BuildContext context, StateSetter setState) => Container(
 //             child: TextFormField(
@@ -527,62 +502,42 @@
 
 // bool passwordVisible = true;
 
-// final password = StatefulBuilder(
-//     builder: (BuildContext context, StateSetter setState) => Container(
-//           child: TextFormField(
-//               validator: validpass,
-//               autofocus: false,
-//               onSaved: (value) {
-//                 _pass = value;
-//               },
-//               controller: passinputcontroller,
-//               obscureText: passwordVisible ? true : false,
-//               decoration: InputDecoration(
-//                 hintText: ' Password',
-//                 contentPadding: EdgeInsets.all(20),
-//                 border: OutlineInputBorder(),
-//                 suffixIcon: IconButton(
-//                     icon: Icon(
-//                       passwordVisible ? Icons.visibility : Icons.visibility_off,
-//                     ),
-//                     onPressed: () {
-//                       setState(() {
-//                         passwordVisible = !passwordVisible;
-//                       });
-//                     }),
-//               )),
-//         ));
+loginButton(formKey) {
+  return Builder(
+    builder: (BuildContext context) => Material(
+      borderRadius: BorderRadius.circular(60.0),
+      shadowColor: Color.fromRGBO(237, 155, 12, 1),
+      // elevation: 5.0,
+      child: MaterialButton(
+        minWidth: 200.0,
+        height: 42.0,
+        onPressed: () {
+          print(formKey.currentState.validate());
+          if (formKey.currentState.validate()) {
+            print("ddd");
+            _navigateToNextScreen(context, Menu());
+          }
+          print("ddd");
+        },
+        color: Color.fromRGBO(237, 155, 12, 1),
+        child: Text('Log In', style: TextStyle(color: Colors.white)),
+      ),
+    ),
+  );
+}
 
-// final loginButton = Builder(
-//   builder: (BuildContext context) => Material(
-//     borderRadius: BorderRadius.circular(60.0),
-//     shadowColor: Color.fromRGBO(237, 155, 12, 1),
-//     // elevation: 5.0,
-//     child: MaterialButton(
-//       minWidth: 200.0,
-//       height: 42.0,
-//       onPressed: () {
-//         if (formKey.currentState.validate()) {
-//           formKey.currentState.save();
-//           getuser(context, _nama, _pass);
-//         }
-//       },
-//       color: Color.fromRGBO(237, 155, 12, 1),
-//       child: Text('Log In', style: TextStyle(color: Colors.white)),
-//     ),
-//   ),
-// );
-
-// // final belum = Builder(
-// //     builder: (BuildContext context) => FlatButton(
-// //           child: Text(
-// //             'Belum punya akun?',
-// //             style: TextStyle(color: Colors.black54),
-// //           ),
-// //           onPressed: () {
-// //             Navigator.pushNamed(context, '/Form');
-// //           },
-// //         ));
+text(String text, Function to) {
+  return Builder(
+      builder: (BuildContext context) => GestureDetector(
+            child: Text(
+              text,
+              style: TextStyle(color: Colors.black54),
+            ),
+            onTap: () {
+              to;
+            },
+          ));
+}
 
 // final editButton = Builder(
 //   builder: (BuildContext context) => Material(
@@ -662,14 +617,3 @@
 // //String validKeyword(String value) {
 // //  if (value.length < 5) return 'Minimum keyword char is 3';
 // //}
-
-// var emailinputcontroller = TextEditingController();
-// var passinputcontroller = new TextEditingController();
-// // var emailcontroller=new TextEditingController();
-// var passcontroller = new TextEditingController();
-// var namainputcontroller = new TextEditingController();
-// var nomorinputcontroller = new TextEditingController();
-// var alamatinputcontroller = new TextEditingController();
-// var passbrinputcontroller = new TextEditingController();
-// var passvrinputcontroller = new TextEditingController();
-// //var keywordInputController = new TextEditingController();
