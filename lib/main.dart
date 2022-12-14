@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:keungan/Login.dart';
 import 'package:keungan/splashscreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,10 +12,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:keungan/homepage.dart';
 
+import 'BLOCS/api.dart';
+
 Future<void> main() async {
   // WidgetsFlutterBinding.ensureInitialized();
   // await initializeService();
-  runApp(const MyApp());
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider<APIBloc>(create: (BuildContext context) => APIBloc()),
+  ], child: const MyApp()));
 }
 
 // Future<void> initializeService() async {

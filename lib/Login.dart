@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:keungan/BLOCS/api.dart';
 // import 'package:test2/util/dbhelper.dart';
 // import 'form.dart';
 // import 'fom.dart';
@@ -26,7 +28,7 @@ class LoginState extends State<Login> {
         backgroundColor: Colors.white,
         body: Row(
           children: [
-            Flexible(flex: getDeviceType() ?? 1, child: Container()),
+            Expanded(flex: getDeviceType() ?? 1, child: Container()),
             Expanded(
               flex: getDeviceTypeContent() ?? 3,
               child: Center(
@@ -34,23 +36,32 @@ class LoginState extends State<Login> {
                     key: formKey,
                     child: ListView(
                       shrinkWrap: true,
-                      padding:
-                          EdgeInsets.only(top: SizeConfig.screenHeight * 30),
+                      padding: EdgeInsets.only(top: tinggiAs(context) * 30),
                       children: <Widget>[
                         // logo,
                         SizedBox(height: 24.0),
-                        nama(namaController),
+                        nama(namaController, context),
                         SizedBox(height: 8.0),
                         password(passwordController, hide),
                         SizedBox(height: 24.0),
-                        loginButton(formKey),
+                        GestureDetector(
+                            onTap: () {
+                              if (formKey.currentState!.validate()) {
+                                context.read<APIBloc>().add(APILogin({
+                                      "password": passwordController.text,
+                                      "username": namaController.text
+                                    }));
+                                // _navigateToNextScreen(context, Menu());
+                              }
+                            },
+                            child: loginButton()),
                         SizedBox(height: 8.0),
                         text("Belum punya akun?", () {}),
                       ],
                     )),
               ),
             ),
-            Flexible(flex: getDeviceType() ?? 1, child: Container()),
+            Expanded(flex: getDeviceType() ?? 1, child: Container()),
           ],
         ));
   }

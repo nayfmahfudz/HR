@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:keungan/Login.dart';
 import 'package:keungan/homepage.dart';
+import '../BLOCS/api.dart';
 import '../main.dart';
 import '../setting.dart';
 
@@ -23,25 +26,25 @@ lebar(context) {
   return widthRatio / heightRatio;
 }
 
-nama(TextEditingController controller) {
-  return StatefulBuilder(
-      builder: (BuildContext context, StateSetter setState) => Container(
-              child: TextFormField(
-            controller: controller,
-            validator: (value) {
-              if (value != null && value.length < 3)
-                return 'Nama Harus diisi minimal 3 kata';
-              else
-                return null;
-            },
-            autofocus: false,
-            decoration: InputDecoration(
-              suffixIcon:
-                  IconButton(onPressed: (() {}), icon: Icon(Icons.account_box)),
-              hintText: 'Username',
-              contentPadding: EdgeInsets.all(20),
-            ),
-          )));
+nama(TextEditingController controller, BuildContext context) {
+  return Container(
+      child: TextFormField(
+    controller: controller,
+    validator: (value) {
+      if (value != null && value.length < 3)
+        return 'Nama Harus diisi minimal 3 kata';
+      else
+        return null;
+    },
+    autofocus: false,
+    decoration: InputDecoration(
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      ),
+      hintText: 'Username',
+      contentPadding: EdgeInsets.all(20),
+    ),
+  ));
 }
 
 password(TextEditingController controller, bool hide) {
@@ -60,13 +63,16 @@ password(TextEditingController controller, bool hide) {
                 decoration: InputDecoration(
                   hintText: ' Password',
                   contentPadding: EdgeInsets.all(20),
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  ),
                   suffixIcon: IconButton(
                       icon: Icon(
                         hide ? Icons.visibility : Icons.visibility_off,
                       ),
                       onPressed: () {
                         setState(() {
+                          controller;
                           hide = !hide;
                         });
                       }),
@@ -502,26 +508,18 @@ menuUtama(BuildContext context, String selected, String aktif,
 
 // bool passwordVisible = true;
 
-loginButton(formKey) {
+loginButton() {
   return Builder(
-    builder: (BuildContext context) => Material(
-      borderRadius: BorderRadius.circular(60.0),
-      shadowColor: Color.fromRGBO(237, 155, 12, 1),
-      // elevation: 5.0,
-      child: MaterialButton(
-        minWidth: 200.0,
-        height: 42.0,
-        onPressed: () {
-          print(formKey.currentState.validate());
-          if (formKey.currentState.validate()) {
-            print("ddd");
-            _navigateToNextScreen(context, Menu());
-          }
-          print("ddd");
-        },
-        color: Color.fromRGBO(237, 155, 12, 1),
-        child: Text('Log In', style: TextStyle(color: Colors.white)),
+    builder: (context) => Container(
+      height: tinggiAs(context) * 27,
+      child:
+          Center(child: Text('Log In', style: TextStyle(color: Colors.white))),
+      decoration: BoxDecoration(
+        color: biru,
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        // shadowColor: Color.fromRGBO(237, 155, 12, 1),
       ),
+      // elevation: 5.0,
     ),
   );
 }
