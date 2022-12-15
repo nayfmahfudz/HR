@@ -7,7 +7,7 @@ import '../BLOCS/api.dart';
 import '../main.dart';
 import '../setting.dart';
 
-_navigateToNextScreen(BuildContext context, Widget newScreen) {
+navigateToNextScreen(BuildContext context, Widget newScreen) {
   Navigator.of(context)
       .push(MaterialPageRoute(builder: (context) => newScreen));
 }

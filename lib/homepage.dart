@@ -72,185 +72,167 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: biru,
-        appBar: PreferredSize(
-            preferredSize: Size.fromHeight(MediaQuery.of(context).size.height *
-                0.25), // here the desired height
-            child: Container(
-              decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 0,
-                    style: BorderStyle.none,
-                    color: putih.withOpacity(0),
-                  ),
-                  color: putih),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
+        appBar: appBar(),
+        body: Stack(children: [
+          Expanded(
+              child: Container(
+            color: Colors.red,
+          ))
+        ]));
+  }
+
+  PreferredSizeWidget appBar() {
+    return PreferredSize(
+        preferredSize: Size.fromHeight(MediaQuery.of(context).size.height *
+            0.46), // here the desired height
+        child: Container(
+          decoration: BoxDecoration(
+              border: Border.all(
+                width: 0,
+                style: BorderStyle.none,
+                color: putih.withOpacity(0),
+              ),
+              color: putih),
+          child: Column(
+            children: [
+              Row(
                 children: [
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
-                        child: SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.06,
-                          width: MediaQuery.of(context).size.width,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: Center(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 30),
-                                    child: Text('APP KEUANGAN',
-                                        textAlign: TextAlign.center,
-                                        style: GoogleFonts.roboto(
-                                          fontSize: 20,
-                                          color: biru,
-                                          fontWeight: FontWeight.w800,
-                                          textStyle: Theme.of(context)
-                                              .textTheme
-                                              .subtitle1,
-                                        )),
-                                  ),
-                                ),
-                              ),
-                              Image.asset("assets/Button_Notifikasi.png",
-                                  height: 50, fit: BoxFit.contain),
-                              SizedBox(
-                                width: 30,
-                              )
-                            ],
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.06,
+                      width: MediaQuery.of(context).size.width,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 50),
+                              child: Text('APP KEUANGAN',
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 20,
+                                    color: biru,
+                                    fontWeight: FontWeight.w800,
+                                    textStyle:
+                                        Theme.of(context).textTheme.subtitle1,
+                                  )),
+                            ),
                           ),
-                        ),
+                          Image.asset("assets/Button_Notifikasi.png",
+                              height: 50, fit: BoxFit.contain),
+                          SizedBox(
+                            width: 30,
+                          )
+                        ],
                       ),
-                    ],
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ReturnValueToParent(() {
-                                setState(() {
-                                  selected = "Home";
-                                });
-                              }, selected, "assets/Button_Home_Aktif.png",
-                                  "assets/Button_Home_Tidak_Aktif.png", "Home"),
-                              ReturnValueToParent(() {
-                                setState(() {
-                                  selected = "Transaksi";
-                                });
-                              }, selected, "assets/Button_Home_Aktif.png",
-                                  "assets/Button_Home_Tidak_Aktif.png", "Home"),
-                              // MenuUtama(
-                              //     context,
-                              //     selected,
-                              //     "assets/Button_Home_Aktif.png",
-                              //     "assets/Button_Home_Tidak_Aktif.png",
-                              //     "Home", () {
-                              //   setState(() {
-                              //     selected = "Home";
-                              //   });
-                              // }),
-                              // MenuUtama(
-                              //     context,
-                              //     selected,
-                              //     "assets/Button_Transaksi_Aktif.png",
-                              //     "assets/Button_Transaksi_Tidak_Aktif.png",
-                              //     "Transaksi", () {
-                              //   setState(() {
-                              //     selected = "Transaksi";
-                              //   });
-                              // }),
-                              // MenuUtama(
-                              //     context,
-                              //     selected,
-                              //     "assets/Button_Laporan_Aktif.png",
-                              //     "assets/Button_Laporan_Tidak_Aktif.png",
-                              //     "Laporan", () {
-                              //   setState(() {
-                              //     selected = "Laporan";
-                              //   });
-                              // }),
-                              // MenuUtama(
-                              //     context,
-                              //     selected,
-                              //     "assets/Button_Tools_Aktif.png",
-                              //     "assets/Button_Tools_Tidak_Aktif.png",
-                              //     "Tools", () {
-                              //   setState(() {
-                              //     selected = "Tools";
-                              //   });
-                              // }),
-                            ],
-                          ),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                width: 0,
-                                style: BorderStyle.none,
-                                color: putih.withOpacity(0),
-                              ),
-                              color: putih),
-                        ),
-                        Expanded(
-                          child: Stack(
-                            children: [
-                              Container(
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                        width: 0,
-                                        style: BorderStyle.none,
-                                        color: putih.withOpacity(0),
-                                      ),
-                                      color: biru)),
-                              Align(
-                                alignment: Alignment.topCenter,
-                                child: ClipPath(
-                                  clipper: TsClip1(),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                          width: 0,
-                                          style: BorderStyle.none,
-                                          color: putih.withOpacity(0),
-                                        ),
-                                        color: putih),
-                                    height: MediaQuery.of(context).size.height *
-                                        0.6,
-                                    width: 105,
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        setState(() {});
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0.0, 0, 0, 6),
-                                        child: Image.asset(
-                                            "assets/Button_Refresh.png",
-                                            fit: BoxFit.contain),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
                     ),
                   ),
                 ],
               ),
-            )),
-        body: ListView.builder(
-            physics: const ScrollPhysics(),
-            itemCount: jumlahOutlet.length,
-            padding: const EdgeInsets.all(10),
-            itemBuilder: (context, i) => Cardoutlet(jumlahOutlet[i])));
+              Padding(
+                padding: EdgeInsets.fromLTRB(30, 10, 30, 20),
+                child: Container(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height * 0.20,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                            flex: 3,
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                      //     child: CircleAvatar(
+                                      //   radius: 30.0,
+                                      //   backgroundImage: NetworkImage(
+                                      //       'https://via.placeholder.com/151',),
+                                      //   backgroundColor: Colors.transparent,
+                                      // )
+                                      ),
+                                ),
+                                Expanded(
+                                    child: Container(
+                                        child: Center(child: Text("task"))))
+                              ],
+                            )),
+                        Expanded(
+                            flex: 2,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text("NAMA"),
+                                      Text("JABATAN"),
+                                      SizedBox(
+                                        height: 16,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                      child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "Check In",
+                                            ),
+                                            Text("JAM")
+                                          ],
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "Check Out",
+                                              textAlign: TextAlign.right,
+                                            ),
+                                            Text("JAM")
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                ),
+                              ],
+                            ))
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        border: Border.all(
+                          width: 0,
+                          style: BorderStyle.none,
+                          color: putih.withOpacity(0),
+                        ),
+                        color: birumuda),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }

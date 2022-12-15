@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:keungan/BLOCS/api.dart';
-// import 'package:test2/util/dbhelper.dart';
-// import 'form.dart';
-// import 'fom.dart';
-// import 'provider/Restapi.dart';
 import 'component/fom.dart';
 import 'component/sizeConfig.dart';
+import 'homepage.dart';
 import 'util/dbhelper.dart';
 
 class Login extends StatefulWidget {
@@ -51,7 +48,7 @@ class LoginState extends State<Login> {
                                       "password": passwordController.text,
                                       "username": namaController.text
                                     }));
-                                // _navigateToNextScreen(context, Menu());
+                                navigateToNextScreen(context, Menu());
                               }
                             },
                             child: loginButton()),
