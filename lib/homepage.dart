@@ -72,167 +72,201 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: biru,
-        appBar: appBar(),
         body: Stack(children: [
-          Expanded(
-              child: Container(
-            color: Colors.red,
-          ))
+          Positioned(
+              top: 0,
+              right: 0,
+              left: 0,
+              child: Column(
+                children: [
+                  appBar(),
+                ],
+              )),
+          Positioned(
+              top: MediaQuery.of(context).size.height * 0.35,
+              right: MediaQuery.of(context).size.width / 15,
+              left: MediaQuery.of(context).size.width / 15,
+              child: cardBody()),
         ]));
   }
 
-  PreferredSizeWidget appBar() {
-    return PreferredSize(
-        preferredSize: Size.fromHeight(MediaQuery.of(context).size.height *
-            0.46), // here the desired height
-        child: Container(
-          decoration: BoxDecoration(
-              border: Border.all(
-                width: 0,
-                style: BorderStyle.none,
-                color: putih.withOpacity(0),
-              ),
-              color: putih),
-          child: Column(
+  Widget cardBody() {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.46,
+      decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: biru.withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 15), // changes position of shadow
+            ),
+          ],
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          border: Border.all(
+            width: 1,
+            color: birumuda.withOpacity(0.3),
+          ),
+          color: putih),
+    );
+  }
+
+  Widget appBar() {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.46,
+      decoration: BoxDecoration(
+          border: Border.all(
+            width: 0,
+            style: BorderStyle.none,
+            color: putih.withOpacity(0),
+          ),
+          color: putih),
+      child: Column(
+        children: [
+          Row(
             children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: MediaQuery.of(context).size.width,
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 50),
-                              child: Text('APP KEUANGAN',
-                                  style: GoogleFonts.roboto(
-                                    fontSize: 20,
-                                    color: biru,
-                                    fontWeight: FontWeight.w800,
-                                    textStyle:
-                                        Theme.of(context).textTheme.subtitle1,
-                                  )),
-                            ),
-                          ),
-                          Image.asset("assets/Button_Notifikasi.png",
-                              height: 50, fit: BoxFit.contain),
-                          SizedBox(
-                            width: 30,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
               Padding(
-                padding: EdgeInsets.fromLTRB(30, 10, 30, 20),
-                child: Container(
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.20,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                            flex: 3,
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Container(
-                                      //     child: CircleAvatar(
-                                      //   radius: 30.0,
-                                      //   backgroundImage: NetworkImage(
-                                      //       'https://via.placeholder.com/151',),
-                                      //   backgroundColor: Colors.transparent,
-                                      // )
-                                      ),
-                                ),
-                                Expanded(
-                                    child: Container(
-                                        child: Center(child: Text("task"))))
-                              ],
-                            )),
-                        Expanded(
-                            flex: 2,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Text("NAMA"),
-                                      Text("JABATAN"),
-                                      SizedBox(
-                                        height: 16,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                      child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Expanded(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "Check In",
-                                            ),
-                                            Text("JAM")
-                                          ],
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "Check Out",
-                                              textAlign: TextAlign.right,
-                                            ),
-                                            Text("JAM")
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  )),
-                                ),
-                              ],
-                            ))
-                      ],
-                    ),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        border: Border.all(
-                          width: 0,
-                          style: BorderStyle.none,
-                          color: putih.withOpacity(0),
+                padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.06,
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 50),
+                          child: Text('APP KEUANGAN',
+                              style: GoogleFonts.roboto(
+                                fontSize: 20,
+                                color: biru,
+                                fontWeight: FontWeight.w800,
+                                textStyle:
+                                    Theme.of(context).textTheme.subtitle1,
+                              )),
                         ),
-                        color: birumuda),
+                      ),
+                      Image.asset("assets/Button_Notifikasi.png",
+                          height: 50, fit: BoxFit.contain),
+                      SizedBox(
+                        width: 30,
+                      )
+                    ],
                   ),
                 ),
               ),
             ],
           ),
-        ));
+          Padding(
+            padding: EdgeInsets.fromLTRB(30, 10, 30, 20),
+            child: Container(
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.20,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                        flex: 3,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                  //     child: CircleAvatar(
+                                  //   radius: 30.0,
+                                  //   backgroundImage: NetworkImage(
+                                  //       'https://via.placeholder.com/151',),
+                                  //   backgroundColor: Colors.transparent,
+                                  // )
+                                  ),
+                            ),
+                            Expanded(
+                                child: Container(
+                                    child: Center(child: Text("task"))))
+                          ],
+                        )),
+                    Expanded(
+                        flex: 2,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text("NAMA"),
+                                  Text("JABATAN"),
+                                  SizedBox(
+                                    height: 16,
+                                  )
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                  child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Check In",
+                                        ),
+                                        Text("JAM")
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Check Out",
+                                          textAlign: TextAlign.right,
+                                        ),
+                                        Text("JAM")
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )),
+                            ),
+                          ],
+                        ))
+                  ],
+                ),
+                decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: biru.withOpacity(0.4),
+                        spreadRadius: 2,
+                        blurRadius: 3,
+                        offset: Offset(0, 1), // changes position of shadow
+                      ),
+                    ],
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    border: Border.all(
+                      width: 0,
+                      style: BorderStyle.none,
+                      color: putih.withOpacity(0),
+                    ),
+                    color: birumuda),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
