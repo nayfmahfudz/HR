@@ -92,23 +92,38 @@ class _MenuState extends State<Menu> {
 
   Widget cardBody() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.46,
-      decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: biru.withOpacity(0.5),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: Offset(0, 15), // changes position of shadow
+        height: MediaQuery.of(context).size.height * 0.46,
+        decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: biru.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 15), // changes position of shadow
+              ),
+            ],
+            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            border: Border.all(
+              width: 1,
+              color: birumuda.withOpacity(0.3),
             ),
-          ],
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          border: Border.all(
-            width: 1,
-            color: birumuda.withOpacity(0.3),
+            color: putih),
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
+          child: GridView.count(
+            physics: NeverScrollableScrollPhysics(),
+            crossAxisCount: 3,
+            crossAxisSpacing: 5,
+            mainAxisSpacing: 5,
+            children: List.generate(6, (index) {
+              return Container(
+                child: Card(
+                  color: Colors.deepPurpleAccent,
+                ),
+              );
+            }),
           ),
-          color: putih),
-    );
+        ));
   }
 
   Widget appBar() {
@@ -249,7 +264,7 @@ class _MenuState extends State<Menu> {
                 decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: biru.withOpacity(0.4),
+                        color: Colors.grey.withOpacity(0.4),
                         spreadRadius: 2,
                         blurRadius: 3,
                         offset: Offset(0, 1), // changes position of shadow
