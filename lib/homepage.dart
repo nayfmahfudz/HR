@@ -107,23 +107,15 @@ class _MenuState extends State<Menu> {
               width: 1,
               color: birumuda.withOpacity(0.3),
             ),
-            color: putih),
+            color: birumuda),
         child: Padding(
-          padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
-          child: GridView.count(
-            physics: NeverScrollableScrollPhysics(),
-            crossAxisCount: 3,
-            crossAxisSpacing: 5,
-            mainAxisSpacing: 5,
-            children: List.generate(6, (index) {
-              return Container(
-                child: Card(
-                  color: Colors.deepPurpleAccent,
-                ),
-              );
-            }),
-          ),
-        ));
+            padding: EdgeInsets.fromLTRB(25, 20, 25, 0),
+            child: GridView.count(
+                physics: NeverScrollableScrollPhysics(),
+                crossAxisCount: 3,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
+                children: rolePegawai(context))));
   }
 
   Widget appBar() {

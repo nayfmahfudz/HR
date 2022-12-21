@@ -26,6 +26,163 @@ lebar(context) {
   return widthRatio / heightRatio;
 }
 
+List<Widget> rolePegawai(context) {
+  return [statistik(context), jam(context), personal(context), tugas(context)];
+}
+
+statistik(context) {
+  return Container(
+    decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: biru.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: Offset(0, 15), // changes position of shadow
+          ),
+        ],
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        border: Border.all(
+          width: 1,
+          color: Colors.grey.withOpacity(0.3),
+        ),
+        color: putih),
+    child: Padding(
+        padding: EdgeInsets.all(tinggiAs(context) / 0.1),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Expanded(flex: 10, child: Image.asset("assets/chart.png")),
+            SizedBox(
+              height: 3,
+            ),
+            Expanded(
+              flex: 3,
+              child: Text(
+                "STATISTIK",
+                style: TextStyle(fontSize: 10),
+              ),
+            )
+          ],
+        )),
+  );
+}
+
+tugas(context) {
+  return Container(
+    decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: biru.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: Offset(0, 15), // changes position of shadow
+          ),
+        ],
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        border: Border.all(
+          width: 1,
+          color: Colors.grey.withOpacity(0.3),
+        ),
+        color: putih),
+    child: Padding(
+        padding: EdgeInsets.all(tinggiAs(context) / 0.1),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(flex: 10, child: Image.asset("assets/task.png")),
+              SizedBox(
+                height: 3,
+              ),
+              Expanded(
+                flex: 3,
+                child: Text(
+                  "TUGAS",
+                  style: TextStyle(fontSize: 10),
+                ),
+              )
+            ])),
+  );
+}
+
+personal(context) {
+  return Container(
+    decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: biru.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: Offset(0, 15), // changes position of shadow
+          ),
+        ],
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        border: Border.all(
+          width: 1,
+          color: Colors.grey.withOpacity(0.3),
+        ),
+        color: putih),
+    child: Padding(
+        padding: EdgeInsets.all(tinggiAs(context) / 0.1),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(flex: 10, child: Image.asset("assets/worker.png")),
+              SizedBox(
+                height: 3,
+              ),
+              Expanded(
+                flex: 3,
+                child: Text(
+                  "PERSONAL",
+                  style: TextStyle(fontSize: 10),
+                ),
+              )
+            ])),
+  );
+}
+
+jam(context) {
+  return Container(
+    decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: biru.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: Offset(0, 15), // changes position of shadow
+          ),
+        ],
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        border: Border.all(
+          width: 1,
+          color: Colors.grey.withOpacity(0.3),
+        ),
+        color: putih),
+    child: Padding(
+        padding: EdgeInsets.all(tinggiAs(context) / 0.1),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(flex: 10, child: Image.asset("assets/clock.png")),
+              SizedBox(
+                height: 3,
+              ),
+              Expanded(
+                flex: 3,
+                child: Text(
+                  "JAM",
+                  style: TextStyle(fontSize: 10),
+                ),
+              )
+            ])),
+  );
+}
+
 nama(TextEditingController controller, BuildContext context) {
   return Container(
       child: TextFormField(
