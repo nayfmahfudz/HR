@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:keungan/setting.dart';
 
 class Pindah extends StatefulWidget {
-  Pindah({Key? key}) : super(key: key);
+  Pindah();
 
   @override
   State<Pindah> createState() => _PindahState();
@@ -15,8 +15,8 @@ class Pindah extends StatefulWidget {
 class _PindahState extends State<Pindah> {
   List listOutlet = ["Outlet 1", "Outlet 2", "Outlet 3", "Outlet 4"];
   List uang = ["IDR", "USD", "EUR", "SGD"];
-  String? selected;
-  String? selectedUang;
+  String selected;
+  String selectedUang;
   List foto = [];
   TextEditingController keterangan = TextEditingController();
   TextEditingController uangController = TextEditingController();
@@ -140,7 +140,7 @@ class _PindahState extends State<Pindah> {
                                     dropdownColor: Colors.white,
                                     value: selected,
                                     isExpanded: true,
-                                    onChanged: (String? newValue) {
+                                    onChanged: (String newValue) {
                                       setState(() {
                                         selected = newValue;
                                       });
@@ -212,7 +212,7 @@ class _PindahState extends State<Pindah> {
                                     dropdownColor: Colors.white,
                                     value: selected,
                                     isExpanded: true,
-                                    onChanged: (String? newValue) {
+                                    onChanged: (String newValue) {
                                       setState(() {
                                         selected = newValue;
                                       });
@@ -354,7 +354,7 @@ class _PindahState extends State<Pindah> {
                       dropdownColor: Colors.white,
                       value: selectedUang,
                       isExpanded: true,
-                      onChanged: (String? newValue) {
+                      onChanged: (String newValue) {
                         setState(() {
                           selectedUang = newValue;
                         });

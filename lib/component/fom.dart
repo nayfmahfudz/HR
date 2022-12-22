@@ -3,9 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:keungan/Login.dart';
 import 'package:keungan/homepage.dart';
+import 'package:keungan/jam.dart';
+import 'package:keungan/statistik.dart';
 import '../BLOCS/api.dart';
 import '../main.dart';
+import '../personal.dart';
 import '../setting.dart';
+import '../tugas.dart';
 
 navigateToNextScreen(BuildContext context, Widget newScreen) {
   Navigator.of(context)
@@ -31,155 +35,167 @@ List<Widget> rolePegawai(context) {
 }
 
 statistik(context) {
-  return Container(
-    decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: biru.withOpacity(0.5),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: Offset(0, 15), // changes position of shadow
-          ),
-        ],
-        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-        border: Border.all(
-          width: 1,
-          color: Colors.grey.withOpacity(0.3),
-        ),
-        color: putih),
-    child: Padding(
-        padding: EdgeInsets.all(tinggiAs(context) / 0.1),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Expanded(flex: 10, child: Image.asset("assets/chart.png")),
-            SizedBox(
-              height: 3,
+  return GestureDetector(
+    onTap: () => navigateToNextScreen(context, Statistik()),
+    child: Container(
+      decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: biru.withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 15), // changes position of shadow
             ),
-            Expanded(
-              flex: 3,
-              child: Text(
-                "STATISTIK",
-                style: TextStyle(fontSize: 10),
-              ),
-            )
           ],
-        )),
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          border: Border.all(
+            width: 1,
+            color: Colors.grey.withOpacity(0.3),
+          ),
+          color: putih),
+      child: Padding(
+          padding: EdgeInsets.all(tinggiAs(context) / 0.1),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(flex: 10, child: Image.asset("assets/chart.png")),
+              SizedBox(
+                height: 3,
+              ),
+              Expanded(
+                flex: 3,
+                child: Text(
+                  "STATISTIK",
+                  style: TextStyle(fontSize: 10),
+                ),
+              )
+            ],
+          )),
+    ),
   );
 }
 
 tugas(context) {
-  return Container(
-    decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: biru.withOpacity(0.5),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: Offset(0, 15), // changes position of shadow
+  return GestureDetector(
+    onTap: () => navigateToNextScreen(context, Tugas()),
+    child: Container(
+      decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: biru.withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 15), // changes position of shadow
+            ),
+          ],
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          border: Border.all(
+            width: 1,
+            color: Colors.grey.withOpacity(0.3),
           ),
-        ],
-        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-        border: Border.all(
-          width: 1,
-          color: Colors.grey.withOpacity(0.3),
-        ),
-        color: putih),
-    child: Padding(
-        padding: EdgeInsets.all(tinggiAs(context) / 0.1),
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(flex: 10, child: Image.asset("assets/task.png")),
-              SizedBox(
-                height: 3,
-              ),
-              Expanded(
-                flex: 3,
-                child: Text(
-                  "TUGAS",
-                  style: TextStyle(fontSize: 10),
+          color: putih),
+      child: Padding(
+          padding: EdgeInsets.all(tinggiAs(context) / 0.1),
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(flex: 10, child: Image.asset("assets/task.png")),
+                SizedBox(
+                  height: 3,
                 ),
-              )
-            ])),
+                Expanded(
+                  flex: 3,
+                  child: Text(
+                    "TUGAS",
+                    style: TextStyle(fontSize: 10),
+                  ),
+                )
+              ])),
+    ),
   );
 }
 
 personal(context) {
-  return Container(
-    decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: biru.withOpacity(0.5),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: Offset(0, 15), // changes position of shadow
+  return GestureDetector(
+    onTap: () => navigateToNextScreen(context, Personal()),
+    child: Container(
+      decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: biru.withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 15), // changes position of shadow
+            ),
+          ],
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          border: Border.all(
+            width: 1,
+            color: Colors.grey.withOpacity(0.3),
           ),
-        ],
-        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-        border: Border.all(
-          width: 1,
-          color: Colors.grey.withOpacity(0.3),
-        ),
-        color: putih),
-    child: Padding(
-        padding: EdgeInsets.all(tinggiAs(context) / 0.1),
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(flex: 10, child: Image.asset("assets/worker.png")),
-              SizedBox(
-                height: 3,
-              ),
-              Expanded(
-                flex: 3,
-                child: Text(
-                  "PERSONAL",
-                  style: TextStyle(fontSize: 10),
+          color: putih),
+      child: Padding(
+          padding: EdgeInsets.all(tinggiAs(context) / 0.1),
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(flex: 10, child: Image.asset("assets/worker.png")),
+                SizedBox(
+                  height: 3,
                 ),
-              )
-            ])),
+                Expanded(
+                  flex: 3,
+                  child: Text(
+                    "PERSONAL",
+                    style: TextStyle(fontSize: 10),
+                  ),
+                )
+              ])),
+    ),
   );
 }
 
 jam(context) {
-  return Container(
-    decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: biru.withOpacity(0.5),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: Offset(0, 15), // changes position of shadow
+  return GestureDetector(
+    onTap: () => navigateToNextScreen(context, Jam()),
+    child: Container(
+      decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: biru.withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 15), // changes position of shadow
+            ),
+          ],
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          border: Border.all(
+            width: 1,
+            color: Colors.grey.withOpacity(0.3),
           ),
-        ],
-        borderRadius: BorderRadius.all(Radius.circular(10.0)),
-        border: Border.all(
-          width: 1,
-          color: Colors.grey.withOpacity(0.3),
-        ),
-        color: putih),
-    child: Padding(
-        padding: EdgeInsets.all(tinggiAs(context) / 0.1),
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(flex: 10, child: Image.asset("assets/clock.png")),
-              SizedBox(
-                height: 3,
-              ),
-              Expanded(
-                flex: 3,
-                child: Text(
-                  "JAM",
-                  style: TextStyle(fontSize: 10),
+          color: putih),
+      child: Padding(
+          padding: EdgeInsets.all(tinggiAs(context) / 0.1),
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(flex: 10, child: Image.asset("assets/clock.png")),
+                SizedBox(
+                  height: 3,
                 ),
-              )
-            ])),
+                Expanded(
+                  flex: 3,
+                  child: Text(
+                    "JAM",
+                    style: TextStyle(fontSize: 10),
+                  ),
+                )
+              ])),
+    ),
   );
 }
 
@@ -665,14 +681,20 @@ menuUtama(BuildContext context, String selected, String aktif,
 
 // bool passwordVisible = true;
 
-loginButton() {
+Widget loginButton(String text, Color warna, Color textwarna) {
   return Builder(
     builder: (context) => Container(
       height: tinggiAs(context) * 27,
-      child:
-          Center(child: Text('Log In', style: TextStyle(color: Colors.white))),
+      child: Center(
+          child: Text(text,
+              style: GoogleFonts.roboto(
+                fontSize: 16,
+                color: textwarna,
+                fontWeight: FontWeight.w500,
+                textStyle: Theme.of(context).textTheme.subtitle1,
+              ))),
       decoration: BoxDecoration(
-        color: biru,
+        color: warna,
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
         // shadowColor: Color.fromRGBO(237, 155, 12, 1),
       ),

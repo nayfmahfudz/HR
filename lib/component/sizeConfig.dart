@@ -18,7 +18,7 @@ class SizeConfig {
   }
 }
 
-int? getDeviceTypeContent() {
+int getDeviceTypeContent() {
   final data = MediaQueryData.fromWindow(WidgetsBinding.instance.window);
   if (data.size.shortestSide < 600) {
     return 4;
@@ -35,7 +35,7 @@ int? getDeviceTypeContent() {
   }
 }
 
-int? getDeviceType() {
+int getDeviceType() {
   final data = MediaQueryData.fromWindow(WidgetsBinding.instance.window);
   if (data.size.shortestSide < 600) {
     return 1;

@@ -75,7 +75,7 @@ void onStart(service) async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp();
 // service.startService();
   @override
   State<MyApp> createState() => _MyAppState();

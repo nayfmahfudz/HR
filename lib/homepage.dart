@@ -11,7 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'component/fom.dart';
 
 class Menu extends StatefulWidget {
-  const Menu({Key? key}) : super(key: key);
+  const Menu();
 
   @override
   State<Menu> createState() => _MenuState();

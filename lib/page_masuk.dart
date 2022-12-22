@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:keungan/setting.dart';
 
 class Masuk extends StatefulWidget {
-  Masuk({Key? key}) : super(key: key);
+  Masuk();
 
   @override
   State<Masuk> createState() => _MasukState();
@@ -15,8 +15,8 @@ class Masuk extends StatefulWidget {
 class _MasukState extends State<Masuk> {
   List listOutlet = ["Outlet 1", "Outlet 2", "Outlet 3", "Outlet 4"];
   List uang = ["IDR", "USD", "EUR", "SGD"];
-  String? selected;
-  String? selectedUang;
+  String selected;
+  String selectedUang;
   List foto = [];
   TextEditingController keterangan = TextEditingController();
   TextEditingController uangController = TextEditingController();
@@ -117,7 +117,7 @@ class _MasukState extends State<Masuk> {
                           dropdownColor: Colors.white,
                           value: selected,
                           isExpanded: true,
-                          onChanged: (String? newValue) {
+                          onChanged: (String newValue) {
                             setState(() {
                               selected = newValue;
                             });
@@ -256,7 +256,7 @@ class _MasukState extends State<Masuk> {
                       dropdownColor: Colors.white,
                       value: selectedUang,
                       isExpanded: true,
-                      onChanged: (String? newValue) {
+                      onChanged: (String newValue) {
                         setState(() {
                           selectedUang = newValue;
                         });

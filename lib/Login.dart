@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:keungan/BLOCS/api.dart';
+import 'package:keungan/setting.dart';
 import 'component/fom.dart';
 import 'component/sizeConfig.dart';
 import 'homepage.dart';
@@ -43,7 +44,7 @@ class LoginState extends State<Login> {
                         SizedBox(height: 24.0),
                         GestureDetector(
                             onTap: () {
-                              if (formKey.currentState!.validate()) {
+                              if (formKey.currentState.validate()) {
                                 context.read<APIBloc>().add(APILogin({
                                       "password": passwordController.text,
                                       "username": namaController.text
@@ -51,7 +52,7 @@ class LoginState extends State<Login> {
                                 navigateToNextScreen(context, Menu());
                               }
                             },
-                            child: loginButton()),
+                            child: loginButton('Log In', biru, putih)),
                         SizedBox(height: 8.0),
                         text("Belum punya akun?", () {}),
                       ],

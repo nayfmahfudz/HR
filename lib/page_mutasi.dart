@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:keungan/setting.dart';
 
 class Mutasi extends StatefulWidget {
-  Mutasi({Key? key}) : super(key: key);
+  Mutasi();
 
   @override
   State<Mutasi> createState() => _MutasiState();
@@ -15,8 +15,8 @@ class Mutasi extends StatefulWidget {
 class _MutasiState extends State<Mutasi> {
   List listOutlet = ["Outlet 1", "Outlet 2", "Outlet 3", "Outlet 4"];
   List uang = ["IDR", "USD", "EUR", "SGD"];
-  String? selected;
-  String? selectedUang;
+  String selected;
+  String selectedUang;
   String startdate = "";
   String todate = "";
   List foto = [];
@@ -105,7 +105,7 @@ class _MutasiState extends State<Mutasi> {
                               dropdownColor: Colors.white,
                               value: selected,
                               isExpanded: true,
-                              onChanged: (String? newValue) {
+                              onChanged: (String newValue) {
                                 setState(() {
                                   selected = newValue;
                                 });
@@ -391,7 +391,7 @@ class _MutasiState extends State<Mutasi> {
                         dropdownColor: Colors.white,
                         value: selected,
                         isExpanded: true,
-                        onChanged: (String? newValue) {
+                        onChanged: (String newValue) {
                           setState(() {
                             selected = newValue;
                           });
@@ -527,7 +527,7 @@ class _MutasiState extends State<Mutasi> {
                       dropdownColor: Colors.white,
                       value: selectedUang,
                       isExpanded: true,
-                      onChanged: (String? newValue) {
+                      onChanged: (String newValue) {
                         setState(() {
                           selectedUang = newValue;
                         });
@@ -629,7 +629,7 @@ class _MutasiState extends State<Mutasi> {
                       dropdownColor: Colors.white,
                       value: selectedUang,
                       isExpanded: true,
-                      onChanged: (String? newValue) {
+                      onChanged: (String newValue) {
                         setState(() {
                           selectedUang = newValue;
                         });
