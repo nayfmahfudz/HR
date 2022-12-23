@@ -46,6 +46,8 @@ dependencies:
   device_info_plus: ^3.2.3
   flutter_bloc: ^8.1.1
   flutter_analog_clock: ^1.0.3
+  table_calendar: ^3.0.8
+  syncfusion_flutter_calendar: ^20.4.38
 
 dev_dependencies:
   flutter_test:
