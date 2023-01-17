@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "keungan",
+            "name": "HR",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "keungan (profile mode)",
+            "name": "HR (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "keungan (release mode)",
+            "name": "HR (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

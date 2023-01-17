@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:keungan/component/clipPath.dart';
-import 'package:keungan/page_keluar.dart';
-import 'package:keungan/page_kurs.dart';
-import 'package:keungan/page_masuk.dart';
-import 'package:keungan/page_mutasi.dart';
-import 'package:keungan/page_pindah.dart';
-import 'package:keungan/setting.dart';
+import 'package:HR/component/clipPath.dart';
+import 'package:HR/page_keluar.dart';
+import 'package:HR/page_kurs.dart';
+import 'package:HR/page_masuk.dart';
+import 'package:HR/page_mutasi.dart';
+import 'package:HR/page_pindah.dart';
+import 'package:HR/setting.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Cardoutlet extends StatefulWidget {

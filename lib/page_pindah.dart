@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:keungan/setting.dart';
+import 'package:HR/setting.dart';
 
 class Pindah extends StatefulWidget {
   Pindah();

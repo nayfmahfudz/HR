@@ -1,4 +1,4 @@
-name: keungan
+name: HR
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -48,6 +48,8 @@ dependencies:
   flutter_analog_clock: ^1.0.3
   table_calendar: ^3.0.8
   syncfusion_flutter_calendar: ^20.4.38
+  geolocator: ^9.0.2
+  image_picker: ^0.8.6
 
 dev_dependencies:
   flutter_test:

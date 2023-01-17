@@ -5,12 +5,12 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:keungan/Login.dart';
-import 'package:keungan/splashscreen.dart';
+import 'package:HR/Login.dart';
+import 'package:HR/splashscreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
-import 'package:keungan/homepage.dart';
+import 'package:HR/homepage.dart';
 
 import 'BLOCS/api.dart';
 

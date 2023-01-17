@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:keungan/BLOCS/api.dart';
-import 'package:keungan/setting.dart';
+import 'package:HR/BLOCS/api.dart';
+import 'package:HR/setting.dart';
 import 'component/fom.dart';
 import 'component/sizeConfig.dart';
 import 'homepage.dart';

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:keungan/Login.dart';
-import 'package:keungan/homepage.dart';
-import 'package:keungan/jam.dart';
-import 'package:keungan/statistik.dart';
+import 'package:HR/Login.dart';
+import 'package:HR/homepage.dart';
+import 'package:HR/jam.dart';
+import 'package:HR/statistik.dart';
 import '../BLOCS/api.dart';
 import '../main.dart';
 import '../personal.dart';
@@ -431,22 +431,57 @@ menuUtama(BuildContext context, String selected, String aktif,
 
 // String hasil;
 
-// void berhasil(BuildContext context) => showDialog(
-//     context: context,
-//     builder: (context) => Center(
-//           child: AlertDialog(
-//             content: Text(
-//               Provider.of<Restapi>(context).getmsg(),
-//               textAlign: TextAlign.center,
-//               style:
-//                   TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
-//             ),
-//             elevation: 3,
-// //                actionsPadding: EdgeInsets.only(right: 28),
-
-//             actions: <Widget>[okButton],
-//           ),
-//         ));
+void berhasil(BuildContext context, String uraian) => showDialog(
+      context: context,
+      builder: (context) => Center(
+        child: Container(
+            height: MediaQuery.of(context).size.height * 0.15,
+            width: MediaQuery.of(context).size.height * 0.3,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(uraian,
+                    style: GoogleFonts.roboto(
+                      fontSize: 16,
+                      color: biru,
+                      fontWeight: FontWeight.w500,
+                      textStyle: Theme.of(context).textTheme.subtitle1,
+                    )),
+                SizedBox(
+                  height: 10,
+                ),
+                okButton
+              ],
+            ),
+            decoration: BoxDecoration(
+              color: putih,
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              // shadowColor: Color.fromRGBO(237, 155, 12, 1),
+            )),
+      ),
+      // elevation: 5.0,
+    );
+var okButton = Builder(
+  builder: (BuildContext context) => Material(
+    shadowColor: birumuda,
+    child: MaterialButton(
+      minWidth: 200.0,
+      height: 42.0,
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      color: biru,
+      child: Text(
+        'OK',
+        style: TextStyle(
+          color: Colors.white,
+        ),
+        textAlign: TextAlign.center,
+      ),
+    ),
+  ),
+);
 // void keluar(BuildContext context) => showDialog(
 //     context: context,
 //     builder: (context) => Center(
